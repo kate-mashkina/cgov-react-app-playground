@@ -1,11 +1,15 @@
+/// <reference types="Cypress" />
+
 import { And, Given, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Given('the user visits the search page', () => {
     cy.visit('http://localhost:3000/search');
+    
 });
 
-Then('page title {string} appears on page', (title) => {
+Then('page title {string} and {string} appears on page', (title, otherTitle) => {
     cy.get('h3').should('contain', title);
+    cy.get('h3').should('contain', otherTitle);
 });
 
 And('home page link with url {string} appears on page', (a) => {
